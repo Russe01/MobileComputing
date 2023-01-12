@@ -1,19 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Funny Filters</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="index.js"></script>
 </head>
-<body>
+<body onkeydown="moveVideoImageBox(event)">
+  <nav id="navbar">
+    Filter Image Maker
+  </nav>
 
-<div class="container-fluid">
-  <h1>My First Bootstrap Page</h1>
-  <p>This is some text.</p>
-</div>
+  <div class="container-fluid row">
+    <div id="imageContainerHeap" class="col-sm-3 text-center">
+      <h5><small>Here you can choose an image file from your memory,<br/>which you want to use as a filter over the video.<br/>
+      It will be displayed in the colored box above.<br/>To put it over the video, just drag it to the<br/>yellow bordered box and drop it there.</small></h5>
+      <input type="file" accept="image/*" name="input" onclick="addNewImageContainer()">
+
+    </div>
+    <div class="col-sm-6 text-center">
+      <div id="videoDiv" class="videoDataContainer">
+        <div id="videoContainer" class="videoContainer" ondrop="dragDrop_videoContainer(event)" ondragover="allowDrop(event)"></div>
+        <video id="video" autoplay ></video>
+      </div>
+      <br/>
+      <div>
+        <h4>To move the image box over the video, press w for "up",<br/>d for "right", s for "down" and a for "left".</h4>
+      </div>
+      <br/>
+      <div class="videoDataContainer">
+        <canvas id="canvas"></canvas>
+      </div>
+    </div>
+    <div id="buttonDiv" class="col-sm-3 text-center">
+      <button class="btn btn-primary" onclick="downsizeVideoImage()">downsize</button>
+      <br/>
+      <button class="btn btn-primary" onclick="upsizeVideoImage()">upsize</button>
+      <br/>
+      <button class="btn btn-primary" onclick="centerVideoImageBox()">center image box</button>
+      <br/>
+      <button class="btn btn-primary" onclick="screenShot()">screenshot</button>
+      <br/>
+      <button class="btn btn-primary" onclick="download()">download</button>
+    </div>
+  </div>
 
 </body>
 </html>
