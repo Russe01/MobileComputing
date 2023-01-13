@@ -2,9 +2,6 @@
 
 window.onload = () => {
 
-    let buttonDiv = $("#buttonDiv");
-    buttonDiv.css("position", "sticky");
-    buttonDiv.css("top", "10px");
 
     if (window.matchMedia("only screen and (max-width: 768px)").matches) {
         let centerDiv = $(".col-sm-6");
@@ -43,6 +40,11 @@ window.onload = () => {
         moveDiv.appendChild(buttonDown);
         moveDiv.appendChild(buttonLeft);
         moveDiv.appendChild(buttonRight);
+    } else {
+        let buttonDiv = $("#buttonDiv");
+        buttonDiv.css("position", "sticky");
+        buttonDiv.css("top", "10px");
+    
     }
 
     var video = document.getElementById("video");
