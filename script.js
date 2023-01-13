@@ -5,6 +5,8 @@ window.onload = () => {
     if (window.matchMedia("only screen and (max-width: 768px)").matches) {
         let centerDiv = $(".col-sm-6");
         let buttonDiv = $("#buttonDiv");
+        buttonDiv.css("position", "");
+        buttonDiv.css("top", "");
         let centerDivCopy = centerDiv.clone();
         let buttonDivCopy = buttonDiv.clone();
         centerDiv.replaceWith(buttonDivCopy);
