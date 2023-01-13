@@ -15,14 +15,20 @@ window.onload = () => {
         });
 
     if (window.matchMedia("only screen and (max-width: 760px)").matches) {
-        $(".col-sm-6").attr("class", "text-center");
-        $(".col-sm-3").attr("class", "text-center");
+        $(".col-sm-6").attr("class", "");
+        $(".col-sm-3").attr("class", "");
+        $(".row").attr("class", "container-fluid");
+        let buttonDiv = document.getElementById("buttonDiv");
+        let centerContainer = document.getElementsByClassName("col-sm-6");
+        let generalContainer = document.getElementsByClassName("container-fluid");
+        generalContainer.insertBefore(buttonDiv, centerContainer);
+        buttonDiv.remove();
     }
 
 
     document.querySelector('input[type="file"]').addEventListener("change", function() {
         if (this.files && this.files[0]) {
-            let img = document.getElementById("image" + (document.getElementsByClassName("imageContainer").length - 1));
+            let img = document.getElementById("image" + ($(".imageContainer").length - 1));
             img.src = URL.createObjectURL(this.files[0]);
         }
     });
