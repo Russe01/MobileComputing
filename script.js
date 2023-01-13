@@ -15,8 +15,8 @@ window.onload = () => {
         });
 
     if (window.matchMedia("only screen and (max-width: 760px)").matches) {
-        $(".col-sm-6").attr("class", "col-xs-6");
-        $(".col-sm-3").attr("class", "col-xs-3");
+        $(".col-sm-6").attr("class", "text-center");
+        $(".col-sm-3").attr("class", "text-center");
     }
 
 
