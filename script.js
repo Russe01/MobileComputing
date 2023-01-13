@@ -8,6 +8,7 @@ window.onload = () => {
         } })
         .then(function (stream) {
             video.srcObject = stream;
+            video.play();
         })
         .catch(function (error) {
              alert("An Error occured while loading the video stream.");
