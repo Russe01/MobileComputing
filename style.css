@@ -57,6 +57,9 @@ body {
 button {
   margin: 3px;
 }
-
+#buttonDiv {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
 
 

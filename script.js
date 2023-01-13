@@ -1,6 +1,46 @@
 
 
 window.onload = () => {
+
+    if (window.matchMedia("only screen and (max-width: 768px)").matches) {
+        let centerDiv = $(".col-sm-6");
+        let buttonDiv = $("#buttonDiv");
+        let centerDivCopy = centerDiv.clone();
+        let buttonDivCopy = buttonDiv.clone();
+        centerDiv.replaceWith(buttonDivCopy);
+        buttonDiv.replaceWith(centerDivCopy);
+        $(".col-sm-6").attr("class", "");
+        $(".col-sm-3").attr("class", "");
+        $(".row").attr("class", "container-fluid");
+
+        $("h4").remove();
+        let buttonUp = document.createElement("button");
+        buttonUp.class = "btn btn-primary";
+        buttonUp.textContent = "Up";
+        buttonUp.onclick = () => moveVideoImageBox("w");
+
+        let buttonRight = document.createElement("button");
+        buttonRight.class = "btn btn-primary";
+        buttonRight.textContent = "Right";
+        buttonRight.onclick = () => moveVideoImageBox("d");
+        
+        let buttonDown = document.createElement("button");
+        buttonDown.class = "btn btn-primary";
+        buttonDown.textContent = "Down";
+        buttonDown.onclick = () => moveVideoImageBox("s");
+
+        let buttonLeft = document.createElement("button");
+        buttonLeft.class = "btn btn-primary";
+        buttonLeft.textContent = "Left";
+        buttonLeft.onclick = () => moveVideoImageBox("a");
+
+        let moveDiv = document.getElementById("moveDiv");
+        moveDiv.appendChild(buttonUp);
+        moveDiv.appendChild(buttonDown);
+        moveDiv.appendChild(buttonLeft);
+        moveDiv.appendChild(buttonRight);
+    }
+
     var video = document.getElementById("video");
 
     navigator.mediaDevices.getUserMedia({ video: {
@@ -13,17 +53,6 @@ window.onload = () => {
         .catch(function (error) {
              alert("An Error occured while loading the video stream.");
         });
-
-    if (window.matchMedia("only screen and (max-width: 760px)").matches) {
-        $(".col-sm-6").attr("class", "");
-        $(".col-sm-3").attr("class", "");
-        $(".row").attr("class", "container-fluid");
-        let buttonDiv = document.getElementById("buttonDiv");
-        let centerContainer = document.getElementsByClassName("col-sm-6");
-        let generalContainer = document.getElementsByClassName("container-fluid");
-        generalContainer.insertBefore(buttonDiv, centerContainer);
-        buttonDiv.remove();
-    }
 
 
     document.querySelector('input[type="file"]').addEventListener("change", function() {
@@ -196,28 +225,28 @@ function centerVideoImageBox() {
     $("#videoContainer").css("left", "25%");
 }
 
-function moveVideoImageBox(keyEvent) {
+function moveVideoImageBox(key) {
     let leftPercentage = parseInt($("#videoContainer").css("left")) / parseInt($("#videoDiv").width()) * 100;
     let topPercentage = parseInt($("#videoContainer").css("top")) / parseInt($("#videoDiv").height()) * 100;
-    if (keyEvent.key == "w") {
+    if (key == "w") {
         if (topPercentage - 1 < 0) {
             return;
         }
         $("#videoContainer").css("top", (topPercentage - 1) + "%");
     }
-    if (keyEvent.key == "d") {
+    if (key == "d") {
         if (leftPercentage + 1 > 50) {
             return;
         }
         $("#videoContainer").css("left", (leftPercentage + 1) + "%");
     }
-    if (keyEvent.key == "s") {
+    if (key == "s") {
         if (topPercentage + 1 > 50) {
             return;
         }
         $("#videoContainer").css("top", (topPercentage + 1) + "%");
     }
-    if (keyEvent.key == "a") {
+    if (key == "a") {
         if (leftPercentage - 1 < 0) {
             return;
         }
