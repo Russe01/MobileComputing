@@ -50,7 +50,7 @@ body {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
 }
-.col-sm-6 , #buttonDiv {
+.col-sm-6 {
   position: sticky;
   top: 10px;
 }
